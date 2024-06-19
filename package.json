@@ -4,7 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css && npm run build:js && npm run build:copy",
+    "build:css": "postcss style.css -o public/style.css",
+    "build:js": "browserify script.js -o public/script.js",
+    "build:copy": "cp index.html public/index.html && cp -R image public/"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +22,9 @@
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.3"
+    "nodemon": "^3.1.3",
+    "browserify": "^17.0.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^9.1.0"
   }
 }
